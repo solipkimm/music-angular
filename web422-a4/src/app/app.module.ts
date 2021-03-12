@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewReleasesComponent } from './new-releases/new-releases.component';
 import { AlbumComponent } from './album/album.component';
+import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AlbumComponent } from './album/album.component';
     AboutComponent,
     NotFoundComponent,
     NewReleasesComponent,
-    AlbumComponent
+    AlbumComponent,
+    ArtistDiscographyComponent
   ],
   imports: [
     BrowserModule,
