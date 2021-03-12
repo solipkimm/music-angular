@@ -18,8 +18,8 @@
         <strong>Tracks: </strong>{{album.total_tracks}}<br /><br />
         <mat-card-content>
           <mat-chip-list aria-label="Artist selection">
-            <mat-chip *ngFor="let artist of album.artists"
-              routerLink="/artist" routerLinkActive="active">{{artist.name}}</mat-chip>
+            <mat-chip routerLink="/artist" routerLinkActive="active" *ngFor="let artist of album.artists"
+              >{{artist.name}}</mat-chip>
           </mat-chip-list>
         </mat-card-content>
       </mat-card>
