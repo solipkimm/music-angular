@@ -8,7 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: "newReleases", component: NewReleasesComponent},
-  { path: "artist", component: ArtistDiscographyComponent },
+  { path: "artist/:id", component: ArtistDiscographyComponent },
   { path: "album", component: AlbumComponent },
   { path: "about", component: AboutComponent },
   { path: "", redirectTo: '/newReleases', pathMatch: 'full' },
