@@ -5,6 +5,7 @@ import { ArtistDiscographyComponent } from './artist-discography/artist-discogra
 import { AlbumComponent } from './album/album.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes: Routes = [
   { path: "newReleases", component: NewReleasesComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "", redirectTo: '/newReleases', pathMatch: 'full' },
   { path: "**", component: NotFoundComponent },
+  { path: "search", component: SearchResultComponent}
 ];
 
 @NgModule({
