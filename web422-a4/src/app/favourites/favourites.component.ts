@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MusicDataService } from '../music-data.service';
 @Component({
   selector: 'app-favourites',
   templateUrl: './favourites.component.html',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouritesComponent implements OnInit {
 
-  constructor() { }
+  favourites: Array<any>
+
+  constructor(
+    private musicDataService: MusicDataService,
+  ) { }
 
   ngOnInit(): void {
+    this.musicDataService.getFavourites().subscribe((data)=>{
+      this.favourites = data.tracks;
+    })
+  }
+
+  removeFromFavourites(id: any){
+    this.musicDataService.removeFromFavourites(id).subscribe((data)=>{
+      this.favourites = data.tracks;
+    })
   }
 
 }
