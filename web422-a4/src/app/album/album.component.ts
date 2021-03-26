@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from '../data/SearchResultsAlbum.json';
 import { MusicDataService } from '../music-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -24,7 +23,9 @@ export class AlbumComponent implements OnInit {
     this.musicDataService.getAlbumById(id).subscribe((data)=>{
       this.album = data;
     })
+  }
 
+  addToFavourites(id: any){
     if (this.musicDataService.addToFavourites(id)){
       this.snackBar.open(
         "Adding to Favourites...", 
@@ -33,4 +34,5 @@ export class AlbumComponent implements OnInit {
       );
     }
   }
+
 }
