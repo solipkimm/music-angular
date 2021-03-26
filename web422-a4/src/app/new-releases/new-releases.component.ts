@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from '../data/NewReleasesAlbums.json';
 import { MusicDataService } from '../music-data.service';
 
 @Component({
@@ -10,9 +9,10 @@ import { MusicDataService } from '../music-data.service';
 export class NewReleasesComponent implements OnInit {
 
   releases = [];
-  private musicDataService: MusicDataService
 
-  constructor() { 
+  constructor(
+    private musicDataService: MusicDataService
+  ) { 
   }
 
   ngOnInit(): void {
