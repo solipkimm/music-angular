@@ -26,6 +26,8 @@ import { ArtistDiscographyComponent } from './artist-discography/artist-discogra
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NotFoundComponent,
     NewReleasesComponent,
     AlbumComponent,
-    ArtistDiscographyComponent
+    ArtistDiscographyComponent,
+    SearchResultComponent,
+    FavouritesComponent
   ],
   imports: [
     BrowserModule,

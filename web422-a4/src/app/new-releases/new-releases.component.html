@@ -13,7 +13,7 @@
           <mat-card-subtitle>New Release</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image class="album-cover" [src]="album.images[0].url" alt="album art" 
-        [routerLink]="['/album/'+item.id]" routerLinkActive="active">
+        [routerLink]="['/album/'+album.id]" routerLinkActive="active">
         <strong>Release Date: </strong>{{album.release_date}}<br />
         <strong>Tracks: </strong>{{album.total_tracks}}<br /><br />
         <mat-card-content>

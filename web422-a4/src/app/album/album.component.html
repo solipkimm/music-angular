@@ -1,6 +1,6 @@
 <h1>{{album.name}}</h1>
 <p>Full track listing for {{album.name}}<br>
-	Click the <mat-icon mat-list-icon>queue_music</mat-icon> to add a song to your favourites list
+	Click the <mat-icon mat-list-icon>queue_music</mat-icon> icon to <strong>add</strong> a song to your favourites list
 	<br><br>
 </p>
 <mat-card>
@@ -36,7 +36,7 @@
 				<mat-card-content>{{track.track_number}}: {{track.name}} - {{(track.duration_ms/60000).toFixed(2)}}
 					<!-- NOTE 3.34 was determined by using (duration_ms / 60000).toFixed(2) -->
 				</mat-card-content>
-				<div *ngIf="track.preview_url"><br /><audio controls [src]="track.preview_url"></audio></div>
+				<div *ngIf="track.preview_url"><audio controls [src]="track.preview_url"></audio></div>
 			</mat-card>
 		</div>
 	</mat-list-item>
