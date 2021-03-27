@@ -10,6 +10,8 @@ export class SearchResultComponent implements OnInit {
 
   results: any;
   searchQuery: any;
+  private albumSub: any;
+  private routeSub: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -17,14 +19,19 @@ export class SearchResultComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParamMap.subscribe((params)=>{
+    this.routeSub = this.activatedRoute.queryParamMap.subscribe((params)=>{
       this.searchQuery = params.get("q");
-      this.musicDataService.searchArtists(this.searchQuery).subscribe((data)=>{
+      this.albumSub = this.musicDataService.searchArtists(this.searchQuery).subscribe((data)=>{
         this.results = data.artists.items.filter((artist)=>{
           return artist.images.length > 0;
         })
       })
     })
+  }
+
+  ngOnDestroy():void{
+    this.routeSub?.unsubscribe();
+    this.albumSub?.unsubscribe();
   }
 
 }
