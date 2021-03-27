@@ -9,11 +9,10 @@ import { MusicDataService } from '../music-data.service';
 })
 export class ArtistDiscographyComponent implements OnInit {
 
-  albums: [];
+  albums: Array<any> = [];
   artist: any;
-  artt: any;
-  albb: any;
-  rutt: any;
+  private artistSub: any;
+  private albumSub: any;
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,10 +21,10 @@ export class ArtistDiscographyComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.musicDataService.getArtistById(id).subscribe((data)=>{
+    this.artistSub = this.musicDataService.getArtistById(id).subscribe((data)=>{
       this.artist = data;
     });
-    this.musicDataService.getAlbumsByArtistId(id).subscribe((data)=>{
+    this.albumSub = this.musicDataService.getAlbumsByArtistId(id).subscribe((data)=>{
       let albumProperty = data.items;
       let seen = new Set();
       this.albums = albumProperty.filter(function(album: {name: unknown}){
@@ -34,5 +33,8 @@ export class ArtistDiscographyComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.artistSub?.unsubscribe();
+    this.albumSub?.unsubscribe();
+  }
 }

@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'web422-a4a5';
+  title = 'web422-a5';
   searchString: string;
 
   constructor(

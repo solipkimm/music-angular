@@ -10,7 +10,7 @@ import { mergeMap } from 'rxjs/operators';
 })
 export class MusicDataService {
 
-  private favouritesList: Array<any> = [];
+  favouritesList: Array<any> = [];
 
   constructor(
     private spotifyToken: SpotifyTokenService, 
@@ -37,7 +37,7 @@ export class MusicDataService {
     let include_groups = "album,single";
     let limit = 50;
     return this.spotifyToken.getBearerToken().pipe(mergeMap(token=>{
-      return this.http.get<any>(`https://api.spotify.com/v1/artists/${id}/albums`, {
+      return this.http.get<any>(`https://api.spotify.com/v1/artists/${id}/albums?include_groups=${include_groups}&limit=${limit}`, {
         headers: { "Authorization": `Bearer ${token}` } 
       });
     }));
@@ -63,12 +63,15 @@ export class MusicDataService {
   }
 
   addToFavourites(id: string) {
+    console.log("addToFavourites called")
     if (id && this.favouritesList.length < 50) {
       this.favouritesList.push(id);
+      console.log(this.favouritesList)
       return true;
     } else {
       return false;
     }
+    
   }
 
   removeFromFavourites(id: string) {

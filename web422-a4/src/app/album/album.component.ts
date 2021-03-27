@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AlbumComponent implements OnInit {
 
   album: any;
+  private albumSub: any;
   
   constructor(
     private musicDataService: MusicDataService,
@@ -22,17 +23,23 @@ export class AlbumComponent implements OnInit {
     let id = this.activatedRoute.snapshot.params['id'];
     this.musicDataService.getAlbumById(id).subscribe((data)=>{
       this.album = data;
+      //console.log(this.album)
     })
   }
 
-  addToFavourites(id: any){
-    if (this.musicDataService.addToFavourites(id)){
+  addToFavourites(trackID: any){
+    console.log("clicked")
+    if (this.musicDataService.addToFavourites(trackID)){
       this.snackBar.open(
         "Adding to Favourites...", 
         "Done", 
         { duration: 1500 }
       );
     }
+  }
+
+  ngOnDestroy(): void {
+    this.albumSub?.unsubscribe();
   }
 
 }

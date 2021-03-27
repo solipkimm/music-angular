@@ -8,7 +8,8 @@ import { MusicDataService } from '../music-data.service';
 })
 export class NewReleasesComponent implements OnInit {
 
-  releases = [];
+  releases: Array<any> = [];
+  private albumSub: any;
 
   constructor(
     private musicDataService: MusicDataService
@@ -16,8 +17,12 @@ export class NewReleasesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.musicDataService.getNewReleases().subscribe((data)=>{
+    this.albumSub = this.musicDataService.getNewReleases().subscribe((data)=>{
       this.releases = data.albums.items;
     })
+  }
+
+  ngOnDestroy():void{
+    this.albumSub?.unsubscribe();
   }
 }

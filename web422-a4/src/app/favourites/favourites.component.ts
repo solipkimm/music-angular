@@ -8,13 +8,14 @@ import { MusicDataService } from '../music-data.service';
 export class FavouritesComponent implements OnInit {
 
   favourites: Array<any>
+  private favSub: any;
 
   constructor(
     private musicDataService: MusicDataService,
   ) { }
 
   ngOnInit(): void {
-    this.musicDataService.getFavourites().subscribe((data)=>{
+    this.favSub = this.musicDataService.getFavourites().subscribe((data)=>{
       this.favourites = data.tracks;
     })
   }
@@ -23,6 +24,11 @@ export class FavouritesComponent implements OnInit {
     this.musicDataService.removeFromFavourites(id).subscribe((data)=>{
       this.favourites = data.tracks;
     })
+  }
+
+
+  ngOnDestroy(): void {
+    this.favSub?.unsubscribe();
   }
 
 }
