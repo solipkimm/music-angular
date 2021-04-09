@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   //private regSub: any;
 
   constructor(
-    private auth:AuthService
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {

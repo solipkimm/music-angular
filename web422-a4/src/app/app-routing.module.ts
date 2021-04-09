@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component'; 
 
 const routes: Routes = [
   { path: "newReleases", component: NewReleasesComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "favourites", component: FavouritesComponent},
   { path: "search", component: SearchResultComponent},
   { path: "register", component: RegisterComponent},
+  { path: "login", component: LoginComponent},
   { path: "", redirectTo: '/newReleases', pathMatch: 'full' },
   { path: "**", component: NotFoundComponent },
 ];
