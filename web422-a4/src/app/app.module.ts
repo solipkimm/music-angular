@@ -31,7 +31,8 @@ import { FavouritesComponent } from './favourites/favourites.component';
 
 import { JwtModule } from '@auth0/angular-jwt'
 import { environment } from '../environments/environment';
-import { RegisterComponent } from './register/register.component'
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RegisterComponent } from './register/register.component'
     ArtistDiscographyComponent,
     SearchResultComponent,
     FavouritesComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
