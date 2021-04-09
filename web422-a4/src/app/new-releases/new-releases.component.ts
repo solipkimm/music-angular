@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { MusicDataService } from '../music-data.service';
 
@@ -13,8 +14,7 @@ export class NewReleasesComponent implements OnInit {
 
   constructor(
     private musicDataService: MusicDataService
-  ) { 
-  }
+  ) { }
 
   ngOnInit(): void {
     this.albumSub = this.musicDataService.getNewReleases().subscribe((data)=>{
