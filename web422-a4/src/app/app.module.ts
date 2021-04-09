@@ -30,7 +30,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 
 import { JwtModule } from '@auth0/angular-jwt'
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment'
     AlbumComponent,
     ArtistDiscographyComponent,
     SearchResultComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
