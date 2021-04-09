@@ -28,6 +28,10 @@ import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+
+import { JwtModule } from '@auth0/angular-jwt'
+import { environment } from '../environments/environment'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +60,12 @@ import { FavouritesComponent } from './favourites/favourites.component';
     MatChipsModule,
     FlexLayoutModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token'),
+        allowedDomains: [ new URL(environment.userAPIBase).host ]
+      }
+    }),
     FormsModule,
     MatSnackBarModule
   ],
