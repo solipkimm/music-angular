@@ -62,7 +62,7 @@ import { environment } from '../environments/environment'
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => localStorage.getItem('token'),
+        tokenGetter: () => localStorage.getItem('access_token'),
         allowedDomains: [ new URL(environment.userAPIBase).host ]
       }
     }),
