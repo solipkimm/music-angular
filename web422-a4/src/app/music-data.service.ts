@@ -15,7 +15,7 @@ export class MusicDataService {
     private http: HttpClient
   ) { }  
 
-  getNewReleases(): Observable<any> {
+  getNewReleases(): Observable<SpotifyApi.ListOfNewReleasesResponse> {
     return this.spotifyToken.getBearerToken().pipe(mergeMap(token=>{
       return this.http.get<any>("https://api.spotify.com/v1/browse/new-releases", { 
         headers: { "Authorization": `Bearer ${token}` } 
@@ -23,7 +23,7 @@ export class MusicDataService {
     }));
   }
 
-  getArtistById(id: string): Observable<any> {
+  getArtistById(id: string): Observable<SpotifyApi.SingleArtistResponse> {
     return this.spotifyToken.getBearerToken().pipe(mergeMap(token=>{
       return this.http.get<any>(`https://api.spotify.com/v1/artists/${id}`, {
         headers: { "Authorization": `Bearer ${token}` } 
@@ -31,7 +31,7 @@ export class MusicDataService {
     }));
   }
 
-  getAlbumsByArtistId(id: string): Observable<any> {
+  getAlbumsByArtistId(id: string): Observable<SpotifyApi.ArtistsAlbumsResponse> {
     let include_groups = "album,single";
     let limit = 50;
     return this.spotifyToken.getBearerToken().pipe(mergeMap(token=>{
@@ -41,7 +41,7 @@ export class MusicDataService {
     }));
   }
 
-  getAlbumById(id: string): Observable<any> {
+  getAlbumById(id: string): Observable<SpotifyApi.SingleAlbumResponse> {
     return this.spotifyToken.getBearerToken().pipe(mergeMap(token=>{
       return this.http.get<any>(`https://api.spotify.com/v1/albums/${id}`, {
         headers: { "Authorization": `Bearer ${token}` } 
@@ -49,7 +49,7 @@ export class MusicDataService {
     }));
   }
 
-  searchArtists(searchString: string): Observable<any> {
+  searchArtists(searchString: string): Observable<SpotifyApi.ArtistSearchResponse> {
     let q = searchString;
     let type = "artist";
     let limit = 50;
@@ -62,7 +62,7 @@ export class MusicDataService {
 
   addToFavourites(id): Observable<[String]> {
     return this.spotifyToken.getBearerToken().pipe(mergeMap(token=>{
-      return this.http.put<any>(`${environment.userAPIBase}/favourites/${id}`, {
+      return this.http.put<[String]>(`${environment.userAPIBase}/favourites/${id}`, {
         headers: { "Authorization": `Bearer ${token}` } 
       });
     }));
